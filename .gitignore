@@ -1,5 +1,6 @@
-# Vite が設定読み込み時に生成する一時ファイル
+# Vite が設定読み込み時に生成する一時ファイル / 依存キャッシュ
 app/*.timestamp-*.mjs
+app/.vite/
 
 # 依存・ビルド中間物（app/.gitignore でも個別に無視）
 node_modules/

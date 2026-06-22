@@ -110510,7 +110510,7 @@
         ]
     },
     {
-        "Id": 90001,
+        "Id": 20057,
         "IsReleased": [
             true,
             true,
@@ -110531,10 +110531,11 @@
         "ArmorType": "LightArmor",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90002,
+        "Id": 10112,
         "IsReleased": [
             true,
             true,
@@ -110555,10 +110556,11 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "AR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90003,
+        "Id": 10134,
         "IsReleased": [
             true,
             true,
@@ -110579,10 +110581,11 @@
         "ArmorType": "Normal",
         "WeaponType": "AR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90004,
+        "Id": 20043,
         "IsReleased": [
             true,
             true,
@@ -110603,10 +110606,11 @@
         "ArmorType": "LightArmor",
         "WeaponType": "MG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90005,
+        "Id": 10136,
         "IsReleased": [
             true,
             true,
@@ -110627,10 +110631,11 @@
         "ArmorType": "LightArmor",
         "WeaponType": "SR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90006,
+        "Id": 10125,
         "IsReleased": [
             true,
             true,
@@ -110639,7 +110644,7 @@
         "DefaultOrder": 199,
         "Name": "エリ",
         "PersonalName": "エリ",
-        "FamilyName": "",
+        "FamilyName": "白尾",
         "School": "WildHunt",
         "SchoolJP": "ワイルドハント",
         "StarGrade": 3,
@@ -110651,10 +110656,12 @@
         "ArmorType": "Unarmed",
         "WeaponType": "SR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "しらお",
+        "PlaceholderId": false
     },
     {
-        "Id": 90007,
+        "Id": 20058,
         "IsReleased": [
             true,
             true,
@@ -110663,7 +110670,7 @@
         "DefaultOrder": 200,
         "Name": "エリカ",
         "PersonalName": "エリカ",
-        "FamilyName": "",
+        "FamilyName": "旗見",
         "School": "Gehenna",
         "SchoolJP": "ゲヘナ",
         "StarGrade": 3,
@@ -110675,10 +110682,12 @@
         "ArmorType": "LightArmor",
         "WeaponType": "SG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "はたみ",
+        "PlaceholderId": false
     },
     {
-        "Id": 90008,
+        "Id": 10126,
         "IsReleased": [
             true,
             true,
@@ -110687,7 +110696,7 @@
         "DefaultOrder": 201,
         "Name": "カノエ",
         "PersonalName": "カノエ",
-        "FamilyName": "",
+        "FamilyName": "板垣",
         "School": "WildHunt",
         "SchoolJP": "ワイルドハント",
         "StarGrade": 3,
@@ -110699,10 +110708,12 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "SG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "いたがき",
+        "PlaceholderId": false
     },
     {
-        "Id": 90009,
+        "Id": 20047,
         "IsReleased": [
             true,
             true,
@@ -110723,10 +110734,11 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "SR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90010,
+        "Id": 20039,
         "IsReleased": [
             true,
             true,
@@ -110735,7 +110747,7 @@
         "DefaultOrder": 203,
         "Name": "キサキ",
         "PersonalName": "キサキ",
-        "FamilyName": "",
+        "FamilyName": "竜華",
         "School": "Shanhaijing",
         "SchoolJP": "山海経",
         "StarGrade": 3,
@@ -110747,10 +110759,12 @@
         "ArmorType": "ElasticArmor",
         "WeaponType": "SMG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "りゅうげ",
+        "PlaceholderId": false
     },
     {
-        "Id": 90011,
+        "Id": 10140,
         "IsReleased": [
             true,
             true,
@@ -110759,7 +110773,7 @@
         "DefaultOrder": 204,
         "Name": "クルミ",
         "PersonalName": "クルミ",
-        "FamilyName": "",
+        "FamilyName": "高倉",
         "School": "SRT",
         "SchoolJP": "SRT",
         "StarGrade": 3,
@@ -110771,10 +110785,12 @@
         "ArmorType": "LightArmor",
         "WeaponType": "SMG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "たかくら",
+        "PlaceholderId": false
     },
     {
-        "Id": 90012,
+        "Id": 10135,
         "IsReleased": [
             true,
             true,
@@ -110783,7 +110799,7 @@
         "DefaultOrder": 205,
         "Name": "ケイ",
         "PersonalName": "ケイ",
-        "FamilyName": "",
+        "FamilyName": "天童",
         "School": "Millennium",
         "SchoolJP": "ミレニアム",
         "StarGrade": 3,
@@ -110795,10 +110811,12 @@
         "ArmorType": "Normal",
         "WeaponType": "RG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "てんどう",
+        "PlaceholderId": false
     },
     {
-        "Id": 90013,
+        "Id": 10137,
         "IsReleased": [
             true,
             true,
@@ -110807,7 +110825,7 @@
         "DefaultOrder": 206,
         "Name": "コノカ",
         "PersonalName": "コノカ",
-        "FamilyName": "",
+        "FamilyName": "志真",
         "School": "Valkyrie",
         "SchoolJP": "ヴァルキューレ",
         "StarGrade": 3,
@@ -110819,10 +110837,12 @@
         "ArmorType": "LightArmor",
         "WeaponType": "SG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "しま",
+        "PlaceholderId": false
     },
     {
-        "Id": 90014,
+        "Id": 20056,
         "IsReleased": [
             true,
             true,
@@ -110843,10 +110863,11 @@
         "ArmorType": "LightArmor",
         "WeaponType": "MG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90015,
+        "Id": 10116,
         "IsReleased": [
             true,
             true,
@@ -110867,10 +110888,11 @@
         "ArmorType": "LightArmor",
         "WeaponType": "AR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90016,
+        "Id": 10106,
         "IsReleased": [
             true,
             true,
@@ -110891,10 +110913,11 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "AR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90017,
+        "Id": 20040,
         "IsReleased": [
             true,
             true,
@@ -110903,7 +110926,7 @@
         "DefaultOrder": 210,
         "Name": "サツキ",
         "PersonalName": "サツキ",
-        "FamilyName": "",
+        "FamilyName": "京極",
         "School": "Gehenna",
         "SchoolJP": "ゲヘナ",
         "StarGrade": 3,
@@ -110915,10 +110938,12 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "きょうごく",
+        "PlaceholderId": false
     },
     {
-        "Id": 90018,
+        "Id": 10114,
         "IsReleased": [
             true,
             true,
@@ -110939,10 +110964,11 @@
         "ArmorType": "LightArmor",
         "WeaponType": "SG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90019,
+        "Id": 10129,
         "IsReleased": [
             true,
             true,
@@ -110963,10 +110989,11 @@
         "ArmorType": "Unarmed",
         "WeaponType": "AR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90020,
+        "Id": 10130,
         "IsReleased": [
             true,
             true,
@@ -110975,7 +111002,7 @@
         "DefaultOrder": 213,
         "Name": "スバル",
         "PersonalName": "スバル",
-        "FamilyName": "",
+        "FamilyName": "梯",
         "School": "Arius",
         "SchoolJP": "アリウス",
         "StarGrade": 3,
@@ -110987,10 +111014,12 @@
         "ArmorType": "Unarmed",
         "WeaponType": "AR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "かけはし",
+        "PlaceholderId": false
     },
     {
-        "Id": 90021,
+        "Id": 20044,
         "IsReleased": [
             true,
             true,
@@ -111011,10 +111040,11 @@
         "ArmorType": "LightArmor",
         "WeaponType": "SG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90022,
+        "Id": 10110,
         "IsReleased": [
             true,
             true,
@@ -111023,7 +111053,7 @@
         "DefaultOrder": 215,
         "Name": "セイア",
         "PersonalName": "セイア",
-        "FamilyName": "",
+        "FamilyName": "百合園",
         "School": "Trinity",
         "SchoolJP": "トリニティ",
         "StarGrade": 3,
@@ -111035,10 +111065,12 @@
         "ArmorType": "ElasticArmor",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "ゆりぞの",
+        "PlaceholderId": false
     },
     {
-        "Id": 90023,
+        "Id": 10123,
         "IsReleased": [
             true,
             true,
@@ -111059,10 +111091,11 @@
         "ArmorType": "Unarmed",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90024,
+        "Id": 10113,
         "IsReleased": [
             true,
             true,
@@ -111083,10 +111116,11 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "GL",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90025,
+        "Id": 10131,
         "IsReleased": [
             true,
             true,
@@ -111095,7 +111129,7 @@
         "DefaultOrder": 218,
         "Name": "タカネ",
         "PersonalName": "タカネ",
-        "FamilyName": "",
+        "FamilyName": "三善",
         "School": "RedWinter",
         "SchoolJP": "レッドウィンター",
         "StarGrade": 3,
@@ -111107,10 +111141,12 @@
         "ArmorType": "LightArmor",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "みよし",
+        "PlaceholderId": false
     },
     {
-        "Id": 90026,
+        "Id": 10107,
         "IsReleased": [
             true,
             true,
@@ -111119,7 +111155,7 @@
         "DefaultOrder": 219,
         "Name": "チアキ",
         "PersonalName": "チアキ",
-        "FamilyName": "",
+        "FamilyName": "元宮",
         "School": "Gehenna",
         "SchoolJP": "ゲヘナ",
         "StarGrade": 3,
@@ -111131,10 +111167,12 @@
         "ArmorType": "Unarmed",
         "WeaponType": "AR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "もとみや",
+        "PlaceholderId": false
     },
     {
-        "Id": 90027,
+        "Id": 10132,
         "IsReleased": [
             true,
             true,
@@ -111155,10 +111193,11 @@
         "ArmorType": "LightArmor",
         "WeaponType": "SMG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90028,
+        "Id": 20038,
         "IsReleased": [
             true,
             true,
@@ -111179,10 +111218,11 @@
         "ArmorType": "Unarmed",
         "WeaponType": "SR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90029,
+        "Id": 20048,
         "IsReleased": [
             true,
             true,
@@ -111203,10 +111243,11 @@
         "ArmorType": "ElasticArmor",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90030,
+        "Id": 10119,
         "IsReleased": [
             true,
             true,
@@ -111215,7 +111256,7 @@
         "DefaultOrder": 223,
         "Name": "ナグサ",
         "PersonalName": "ナグサ",
-        "FamilyName": "",
+        "FamilyName": "御稜",
         "School": "Hyakkiyako",
         "SchoolJP": "百鬼夜行",
         "StarGrade": 3,
@@ -111227,10 +111268,12 @@
         "ArmorType": "ElasticArmor",
         "WeaponType": "SR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "ごりょう",
+        "PlaceholderId": false
     },
     {
-        "Id": 90031,
+        "Id": 10142,
         "IsReleased": [
             true,
             true,
@@ -111251,10 +111294,11 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "SR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90032,
+        "Id": 10120,
         "IsReleased": [
             true,
             true,
@@ -111275,10 +111319,11 @@
         "ArmorType": "Unarmed",
         "WeaponType": "SMG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90033,
+        "Id": 10139,
         "IsReleased": [
             true,
             true,
@@ -111287,7 +111332,7 @@
         "DefaultOrder": 226,
         "Name": "ニコ",
         "PersonalName": "ニコ",
-        "FamilyName": "",
+        "FamilyName": "吉野",
         "School": "SRT",
         "SchoolJP": "SRT",
         "StarGrade": 3,
@@ -111299,10 +111344,12 @@
         "ArmorType": "ElasticArmor",
         "WeaponType": "SG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "よしの",
+        "PlaceholderId": false
     },
     {
-        "Id": 90034,
+        "Id": 20046,
         "IsReleased": [
             true,
             true,
@@ -111311,7 +111358,7 @@
         "DefaultOrder": 227,
         "Name": "ニヤ",
         "PersonalName": "ニヤ",
-        "FamilyName": "",
+        "FamilyName": "天地",
         "School": "Hyakkiyako",
         "SchoolJP": "百鬼夜行",
         "StarGrade": 3,
@@ -111323,10 +111370,12 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "あまち",
+        "PlaceholderId": false
     },
     {
-        "Id": 90035,
+        "Id": 10111,
         "IsReleased": [
             true,
             true,
@@ -111347,10 +111396,11 @@
         "ArmorType": "ElasticArmor",
         "WeaponType": "SMG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90036,
+        "Id": 10109,
         "IsReleased": [
             true,
             true,
@@ -111371,10 +111421,11 @@
         "ArmorType": "LightArmor",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90037,
+        "Id": 10118,
         "IsReleased": [
             true,
             true,
@@ -111383,7 +111434,7 @@
         "DefaultOrder": 230,
         "Name": "ノゾミ",
         "PersonalName": "ノゾミ",
-        "FamilyName": "",
+        "FamilyName": "橘",
         "School": "Highlander",
         "SchoolJP": "ハイランダー",
         "StarGrade": 3,
@@ -111395,10 +111446,12 @@
         "ArmorType": "LightArmor",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "たちばな",
+        "PlaceholderId": false
     },
     {
-        "Id": 90038,
+        "Id": 10124,
         "IsReleased": [
             true,
             true,
@@ -111419,10 +111472,11 @@
         "ArmorType": "LightArmor",
         "WeaponType": "SR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90039,
+        "Id": 10141,
         "IsReleased": [
             true,
             true,
@@ -111443,10 +111497,11 @@
         "ArmorType": "LightArmor",
         "WeaponType": "SG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90040,
+        "Id": 10117,
         "IsReleased": [
             true,
             true,
@@ -111455,7 +111510,7 @@
         "DefaultOrder": 233,
         "Name": "ヒカリ",
         "PersonalName": "ヒカリ",
-        "FamilyName": "",
+        "FamilyName": "橘",
         "School": "Highlander",
         "SchoolJP": "ハイランダー",
         "StarGrade": 3,
@@ -111467,10 +111522,12 @@
         "ArmorType": "LightArmor",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "たちばな",
+        "PlaceholderId": false
     },
     {
-        "Id": 90041,
+        "Id": 20054,
         "IsReleased": [
             true,
             true,
@@ -111491,10 +111548,11 @@
         "ArmorType": "ElasticArmor",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90042,
+        "Id": 20045,
         "IsReleased": [
             true,
             true,
@@ -111515,10 +111573,11 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "MG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90043,
+        "Id": 10128,
         "IsReleased": [
             true,
             true,
@@ -111527,7 +111586,7 @@
         "DefaultOrder": 236,
         "Name": "フユ",
         "PersonalName": "フユ",
-        "FamilyName": "",
+        "FamilyName": "若狭",
         "School": "WildHunt",
         "SchoolJP": "ワイルドハント",
         "StarGrade": 3,
@@ -111539,10 +111598,12 @@
         "ArmorType": "Unarmed",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "わかさ",
+        "PlaceholderId": false
     },
     {
-        "Id": 90044,
+        "Id": 20042,
         "IsReleased": [
             true,
             true,
@@ -111563,10 +111624,11 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "MG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90045,
+        "Id": 10105,
         "IsReleased": [
             true,
             true,
@@ -111587,10 +111649,11 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90046,
+        "Id": 10103,
         "IsReleased": [
             true,
             true,
@@ -111611,10 +111674,11 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "SMG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90047,
+        "Id": 10122,
         "IsReleased": [
             true,
             true,
@@ -111635,10 +111699,11 @@
         "ArmorType": "Unarmed",
         "WeaponType": "SMG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90048,
+        "Id": 20049,
         "IsReleased": [
             true,
             true,
@@ -111659,10 +111724,11 @@
         "ArmorType": "Unarmed",
         "WeaponType": "RL",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90049,
+        "Id": 20053,
         "IsReleased": [
             true,
             true,
@@ -111683,10 +111749,11 @@
         "ArmorType": "LightArmor",
         "WeaponType": "SG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90050,
+        "Id": 10127,
         "IsReleased": [
             true,
             true,
@@ -111695,7 +111762,7 @@
         "DefaultOrder": 243,
         "Name": "ミヨ",
         "PersonalName": "ミヨ",
-        "FamilyName": "",
+        "FamilyName": "桜井",
         "School": "WildHunt",
         "SchoolJP": "ワイルドハント",
         "StarGrade": 3,
@@ -111707,10 +111774,12 @@
         "ArmorType": "ElasticArmor",
         "WeaponType": "SR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "さくらい",
+        "PlaceholderId": false
     },
     {
-        "Id": 90051,
+        "Id": 20059,
         "IsReleased": [
             true,
             true,
@@ -111731,10 +111800,11 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "MG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90052,
+        "Id": 20052,
         "IsReleased": [
             true,
             true,
@@ -111743,7 +111813,7 @@
         "DefaultOrder": 245,
         "Name": "ヤクモ",
         "PersonalName": "ヤクモ",
-        "FamilyName": "",
+        "FamilyName": "荒槇",
         "School": "RedWinter",
         "SchoolJP": "レッドウィンター",
         "StarGrade": 3,
@@ -111755,10 +111825,12 @@
         "ArmorType": "LightArmor",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "あらまき",
+        "PlaceholderId": false
     },
     {
-        "Id": 90053,
+        "Id": 10108,
         "IsReleased": [
             true,
             true,
@@ -111779,10 +111851,11 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "SMG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90054,
+        "Id": 10121,
         "IsReleased": [
             true,
             true,
@@ -111803,10 +111876,11 @@
         "ArmorType": "LightArmor",
         "WeaponType": "SR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90055,
+        "Id": 20055,
         "IsReleased": [
             true,
             true,
@@ -111827,10 +111901,11 @@
         "ArmorType": "Unarmed",
         "WeaponType": "GL",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90056,
+        "Id": 20041,
         "IsReleased": [
             true,
             true,
@@ -111839,7 +111914,7 @@
         "DefaultOrder": 249,
         "Name": "リオ",
         "PersonalName": "リオ",
-        "FamilyName": "",
+        "FamilyName": "調月",
         "School": "Millennium",
         "SchoolJP": "ミレニアム",
         "StarGrade": 3,
@@ -111851,10 +111926,12 @@
         "ArmorType": "ElasticArmor",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "つかつき",
+        "PlaceholderId": false
     },
     {
-        "Id": 90057,
+        "Id": 10133,
         "IsReleased": [
             true,
             true,
@@ -111875,10 +111952,11 @@
         "ArmorType": "Unarmed",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90058,
+        "Id": 20050,
         "IsReleased": [
             true,
             true,
@@ -111887,7 +111965,7 @@
         "DefaultOrder": 251,
         "Name": "リツ",
         "PersonalName": "リツ",
-        "FamilyName": "",
+        "FamilyName": "薄葉",
         "School": "WildHunt",
         "SchoolJP": "ワイルドハント",
         "StarGrade": 3,
@@ -111899,10 +111977,12 @@
         "ArmorType": "Unarmed",
         "WeaponType": "SMG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "うすば",
+        "PlaceholderId": false
     },
     {
-        "Id": 90059,
+        "Id": 10115,
         "IsReleased": [
             true,
             true,
@@ -111911,7 +111991,7 @@
         "DefaultOrder": 252,
         "Name": "レイ",
         "PersonalName": "レイ",
-        "FamilyName": "",
+        "FamilyName": "野正",
         "School": "Millennium",
         "SchoolJP": "ミレニアム",
         "StarGrade": 3,
@@ -111923,10 +112003,12 @@
         "ArmorType": "LightArmor",
         "WeaponType": "RL",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "のまさ",
+        "PlaceholderId": false
     },
     {
-        "Id": 90060,
+        "Id": 20051,
         "IsReleased": [
             true,
             true,
@@ -111947,10 +112029,11 @@
         "ArmorType": "Unarmed",
         "WeaponType": "SG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90061,
+        "Id": 10104,
         "IsReleased": [
             true,
             true,
@@ -111959,7 +112042,7 @@
         "DefaultOrder": 254,
         "Name": "レイジョ",
         "PersonalName": "レイジョ",
-        "FamilyName": "",
+        "FamilyName": "鹿山",
         "School": "Shanhaijing",
         "SchoolJP": "山海経",
         "StarGrade": 3,
@@ -111971,10 +112054,12 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "AR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "かやま",
+        "PlaceholderId": false
     },
     {
-        "Id": 90062,
+        "Id": 10138,
         "IsReleased": [
             true,
             true,
@@ -111983,7 +112068,7 @@
         "DefaultOrder": 255,
         "Name": "レナ",
         "PersonalName": "レナ",
-        "FamilyName": "",
+        "FamilyName": "衣斐",
         "School": "WildHunt",
         "SchoolJP": "ワイルドハント",
         "StarGrade": 3,
@@ -111995,10 +112080,12 @@
         "ArmorType": "LightArmor",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "きぬい",
+        "PlaceholderId": false
     },
     {
-        "Id": 90063,
+        "Id": 13014,
         "IsReleased": [
             true,
             true,
@@ -112019,10 +112106,11 @@
         "ArmorType": "Unarmed",
         "WeaponType": "SR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90064,
+        "Id": 16017,
         "IsReleased": [
             true,
             true,
@@ -112031,7 +112119,7 @@
         "DefaultOrder": 257,
         "Name": "アオバ",
         "PersonalName": "アオバ",
-        "FamilyName": "",
+        "FamilyName": "内海",
         "School": "Highlander",
         "SchoolJP": "ハイランダー",
         "StarGrade": 1,
@@ -112043,10 +112131,12 @@
         "ArmorType": "LightArmor",
         "WeaponType": "SG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "うつみ",
+        "PlaceholderId": false
     },
     {
-        "Id": 90065,
+        "Id": 26015,
         "IsReleased": [
             true,
             true,
@@ -112067,10 +112157,11 @@
         "ArmorType": "Unarmed",
         "WeaponType": "AR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90066,
+        "Id": 16020,
         "IsReleased": [
             true,
             true,
@@ -112079,7 +112170,7 @@
         "DefaultOrder": 259,
         "Name": "オトギ",
         "PersonalName": "オトギ",
-        "FamilyName": "",
+        "FamilyName": "天神山",
         "School": "SRT",
         "SchoolJP": "SRT",
         "StarGrade": 1,
@@ -112091,10 +112182,12 @@
         "ArmorType": "Unarmed",
         "WeaponType": "SR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "てんじんやま",
+        "PlaceholderId": false
     },
     {
-        "Id": 90067,
+        "Id": 26014,
         "IsReleased": [
             true,
             true,
@@ -112115,10 +112208,11 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "SR",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90068,
+        "Id": 16019,
         "IsReleased": [
             true,
             true,
@@ -112139,10 +112233,11 @@
         "ArmorType": "LightArmor",
         "WeaponType": "HG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90069,
+        "Id": 16016,
         "IsReleased": [
             true,
             true,
@@ -112163,10 +112258,11 @@
         "ArmorType": "HeavyArmor",
         "WeaponType": "SG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "PlaceholderId": false
     },
     {
-        "Id": 90070,
+        "Id": 16018,
         "IsReleased": [
             true,
             true,
@@ -112175,7 +112271,7 @@
         "DefaultOrder": 263,
         "Name": "ラブ",
         "PersonalName": "ラブ",
-        "FamilyName": "",
+        "FamilyName": "河駒風",
         "School": "Trinity",
         "SchoolJP": "トリニティ",
         "StarGrade": 1,
@@ -112187,6 +112283,8 @@
         "ArmorType": "Unarmed",
         "WeaponType": "SG",
         "Source": "wikiru",
-        "DataPartial": true
+        "DataPartial": true,
+        "FamilyNameRuby": "こまかぜ",
+        "PlaceholderId": false
     }
 ]

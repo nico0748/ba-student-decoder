@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { generatePuzzle, chars } from "../engine.js";
 import { addRecord, fmt, bestTime, topRows, setRank } from "../ranking.js";
-import { portraitOf } from "../data.js";
+import { portraitOf, hintOf } from "../data.js";
 import { fireConfetti } from "../confetti.js";
 
 const normalize = (s) => (s || "").trim().replace(/\s/g, "");
@@ -23,6 +23,7 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
   // playing: 解答中 / wrong: 誤答 / solved: 当該問題クリア(次へ待ち) / done: 全問クリア(記録済) / gaveup: 降参(記録なし)
   const [status, setStatus] = useState("playing");
   const [solved, setSolved] = useState(0); // セッション内で解いた問題数
+  const [hintLevel, setHintLevel] = useState(0); // 公開済みヒント段数（問題ごとにリセット）
   const [start, setStart] = useState(Date.now()); // セッション開始時刻（問題が変わってもリセットしない）
   const [now, setNow] = useState(Date.now());
   const [finalTime, setFinalTime] = useState(0);
@@ -35,7 +36,7 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
     setPuzzle(p);
     const init = {}; if (p) for (const [ch, dg] of Object.entries(p.confirmedMap)) init[dg] = ch;
     setMemo(init);
-    setAnswer(""); setStatus("playing");
+    setAnswer(""); setStatus("playing"); setHintLevel(0);
   };
 
   // セッション開始（タイマーリセット＋1問目）
@@ -91,6 +92,14 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
     clearInterval(timerRef.current);
     setStatus("gaveup");
   };
+
+  // ヒント（答えの生徒の 所属学園 → 学年/レアリティ の順に段階公開）
+  const hint = hintOf(puzzle.answer);
+  const hintSteps = [];
+  if (hint?.school) hintSteps.push({ label: "所属学園", value: hint.school });
+  if (hint?.grade) hintSteps.push({ label: "学年", value: hint.grade });
+  const revealedHints = hintSteps.slice(0, hintLevel);
+  const canHint = (status === "playing" || status === "wrong") && hintLevel < hintSteps.length;
 
   return (
     <div>
@@ -158,9 +167,20 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
             onKeyDown={(e) => e.key === "Enter" && submit()} disabled={status !== "playing" && status !== "wrong"} />
           <button className="btn" onClick={submit} disabled={(status !== "playing" && status !== "wrong") || !answer.trim()}>解読する</button>
           {status === "solved" && <button className="btn gold" onClick={loadPuzzle}>次の問題へ →</button>}
+          {canHint && (
+            <button className="btn ghost" onClick={() => setHintLevel((l) => l + 1)}>
+              💡 ヒント（{hintSteps[hintLevel].label}）
+            </button>
+          )}
           <div className="spacer"></div>
           {inProgress && <button className="link" onClick={giveUp}>降参（記録なしで終了）</button>}
         </div>
+
+        {revealedHints.length > 0 && status !== "done" && status !== "gaveup" && (
+          <div className="banner" style={{ background: "#eef6ff", color: "#1b4f86", border: "1.5px solid var(--ba-blue)", fontSize: 14 }}>
+            💡 ヒント：{revealedHints.map((h) => `${h.label} = ${h.value}`).join("　/　")}
+          </div>
+        )}
 
         {status === "solved" && (
           <div className="banner ok">
