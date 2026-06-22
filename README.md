@@ -82,6 +82,19 @@ bash scripts/fetch-images.sh   # SchaleDB から images/student/{icon,portrait}/
 cd app && npm run build        # 取得後に再ビルドでゲームに反映
 ```
 
+## 立ち絵（wikiru）の取得
+
+全キャラ **263件** の立ち絵を wikiru から取得できます。取得先一覧は
+`images/student/wiki/manifest.tsv`（`<保存名>\t<URLパス>`）、内訳は `docs/tachie-manifest.csv` を参照。
+
+```bash
+bash scripts/fetch-tachie.sh   # wikiru から images/student/wiki/<キャラ名>.png|.jpg を取得
+```
+
+- 241件はメイン立ち絵（`<名前>.png`）。残り22件は wikiru の命名都合で
+  `_立ち絵N` / `_圧縮` / `_攻撃型` / `メモリアルロビー` 等の代替画像を採用（種別は manifest 参照）。
+- SchaleDB の icon/portrait とは別フォルダ（`images/student/wiki/`）で管理し、既存画像は変更しません。
+
 ## クレジット
 
 - データ・画像出典：SchaleDB
