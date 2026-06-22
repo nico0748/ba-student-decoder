@@ -1,0 +1,10 @@
+# Vite が設定読み込み時に生成する一時ファイル
+app/*.timestamp-*.mjs
+
+# 依存・ビルド中間物（app/.gitignore でも個別に無視）
+node_modules/
+dist/
+
+# OS / エディタ
+.DS_Store
+*.log
