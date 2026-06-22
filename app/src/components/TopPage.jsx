@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { setUserLS, bestTime, fmt } from "../ranking.js";
 import { NAMES, iconOf } from "../data.js";
+import Footer from "./Footer.jsx";
 
 const DIFFS = [
   { key: "easy", name: "EASY", stars: "★☆☆", desc: "4名・ヒント2つ。まずは規則に慣れよう。" },
@@ -107,10 +108,7 @@ export default function TopPage({ difficulty, setDifficulty, count, setCount, us
         </div>
       </div>
 
-      <p className="small" style={{ textAlign: "center", marginTop: 20 }}>
-        ブルーアーカイブ二次創作の暗号パズル / データ・画像出典: SchaleDB<br />
-        本ゲームはファンメイドであり株式会社Yostar・NEXON Games非公認です。
-      </p>
+      <Footer />
     </div>
   );
 }

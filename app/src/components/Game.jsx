@@ -2,7 +2,9 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { generatePuzzle, chars } from "../engine.js";
 import { addRecord, fmt, bestTime, topRows, setRank } from "../ranking.js";
 import { portraitOf, hintOf } from "../data.js";
+import { toKatakana } from "../kana.js";
 import { fireConfetti } from "../confetti.js";
+import Footer from "./Footer.jsx";
 
 const normalize = (s) => (s || "").trim().replace(/\s/g, "");
 
@@ -68,7 +70,15 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
   [puzzle.confirmed.seq, ...puzzle.deductionSeqs, puzzle.questionSeq].forEach((s) => chars(s).forEach((d) => allDigits.add(d)));
   const display = (d) => (fixedMap[d] !== undefined ? fixedMap[d] : (memo[d] || ""));
 
-  const setMemoDigit = (d, v) => { const v2 = chars(v).slice(-1).join(""); setMemo((m) => ({ ...m, [d]: v2 })); };
+  // ローマ字／ひらがなをカタカナへ自動変換。1セル=1文字なので確定済みカタカナは末尾1文字だけ残し、
+  // 入力途中のローマ字（例: "sh"）は温存して次のキーで確定させる。
+  const setMemoDigit = (d, v) => {
+    const conv = toKatakana(v);
+    const pending = (conv.match(/[a-zA-Z]+$/) || [""])[0];
+    const kataPart = conv.slice(0, conv.length - pending.length);
+    const lastKata = kataPart ? chars(kataPart).slice(-1).join("") : "";
+    setMemo((m) => ({ ...m, [d]: lastKata + pending }));
+  };
 
   const submit = () => {
     if (status !== "playing" && status !== "wrong") return;
@@ -151,7 +161,7 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
               <div key={d} className={"memocell " + (fixed ? "fixed" : used ? "used" : "idle")}>
                 <div className="d">{d}</div>
                 <input value={fixed ? fixedMap[d] : (memo[d] || "")} disabled={fixed || !used}
-                  maxLength={2} placeholder={used ? "？" : "-"}
+                  maxLength={4} placeholder={used ? "？" : "-"} inputMode="text" autoComplete="off"
                   onChange={(e) => setMemoDigit(d, e.target.value)} />
               </div>
             );
@@ -234,6 +244,8 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
           <button className="link" onClick={() => { if (confirm("この端末のランキング記録を消去しますか？")) { setRank([]); setRanking([]); } }}>記録をリセット</button>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

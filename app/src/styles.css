@@ -7,11 +7,20 @@
 html,body{margin:0;padding:0;}
 body{
   font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",sans-serif;
-  background:
-    radial-gradient(circle at 12% -10%, #d7ecff 0, transparent 45%),
-    radial-gradient(circle at 100% 0%, #fff4cf 0, transparent 35%),
-    var(--ba-bg);
+  background:linear-gradient(160deg,#e4f1ff 0%, #eaf4fc 45%, #f3f9ff 100%);
   color:var(--ba-ink); min-height:100vh;
+}
+/* 水色×透明感のある幾何学模様の背景（全画面固定レイヤー） */
+body::before{
+  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background-color:transparent;
+  background-image:
+    radial-gradient(circle at 12% -8%, rgba(120,196,255,.35) 0, transparent 42%),
+    radial-gradient(circle at 100% 0%, rgba(255,244,207,.45) 0, transparent 32%),
+    radial-gradient(circle at 85% 105%, rgba(120,196,255,.30) 0, transparent 45%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'%3E%3Cg fill='none' stroke='%233da9fc' stroke-opacity='0.16' stroke-width='2'%3E%3Cpath d='M44 26 V62 M26 44 H62' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M250 235 V271 M232 253 H268' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M236 52 L264 100 L208 100 Z'/%3E%3Crect x='44' y='210' width='52' height='52' rx='12'/%3E%3Ccircle cx='150' cy='128' r='16'/%3E%3Cpath d='M150 -10 L330 170' stroke-width='1.5' stroke-opacity='0.10'/%3E%3Cpath d='M-10 150 L150 310' stroke-width='1.5' stroke-opacity='0.10'/%3E%3C/g%3E%3Cg fill='%237cc4ff' fill-opacity='0.18'%3E%3Ccircle cx='160' cy='160' r='6'/%3E%3Ccircle cx='28' cy='150' r='4'/%3E%3Ccircle cx='292' cy='120' r='4'/%3E%3Ccircle cx='188' cy='262' r='5'/%3E%3Crect x='118' y='44' width='14' height='14' rx='3' transform='rotate(45 125 51)'/%3E%3Crect x='208' y='168' width='12' height='12' rx='3' transform='rotate(45 214 174)'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat:no-repeat,no-repeat,no-repeat,repeat;
+  background-size:auto,auto,auto,300px 300px;
 }
 #root{max-width:760px;margin:0 auto;padding:16px 14px 60px;}
 .halo{color:var(--ba-blue);font-weight:800;}
@@ -93,6 +102,14 @@ input.txt:focus{border-color:var(--ba-blue);}
 .roster.open{max-height:420px;overflow:auto;}
 .rname{font-size:12.5px;padding:4px 9px;border-radius:8px;background:#f3f8ff;border:1px solid var(--ba-line);display:inline-flex;align-items:center;gap:5px;}
 .small{font-size:12px;color:var(--ba-muted);}
+/* footer（出典・免責） */
+.footer{margin-top:22px;padding:14px 16px;border:1px solid var(--ba-line);border-radius:14px;
+  background:rgba(255,255,255,.66);backdrop-filter:blur(2px);}
+.footer-row{display:flex;gap:8px;font-size:11.5px;line-height:1.7;color:var(--ba-ink);margin-bottom:4px;flex-wrap:wrap;}
+.footer-key{flex:0 0 auto;font-weight:800;color:var(--ba-blue-d);background:#eef4fb;border-radius:6px;padding:1px 8px;height:fit-content;}
+.footer a{color:var(--ba-blue-d);font-weight:700;text-decoration:none;border-bottom:1px solid var(--ba-line);}
+.footer a:hover{border-bottom-color:var(--ba-blue);}
+.footer-note{font-size:11px;line-height:1.7;color:var(--ba-muted);margin:8px 0 0;}
 .link{color:var(--ba-blue-d);font-weight:800;cursor:pointer;background:none;border:none;font-size:13px;}
 .confetti{position:fixed;top:-10px;width:9px;height:14px;border-radius:2px;z-index:50;pointer-events:none;animation:fall linear forwards;}
 @keyframes fall{to{transform:translateY(105vh) rotate(540deg);opacity:.9;}}
