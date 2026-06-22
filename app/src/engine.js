@@ -77,9 +77,12 @@ export function generatePuzzle(difficulty = "normal") {
     const digits = shuffle([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]).slice(0, used.length).map(String);
     const charDigit = {}; used.forEach((c, i) => (charDigit[c] = digits[i]));
     const encode = (name) => chars(name).map((c) => charDigit[c]).join("");
-    const sh = shuffle([...set]); const confirmed = sh[0];
+    // チェーン推理を成立させるため、確定情報をチェーンの起点(set[0])に固定。
+    // buildConnectedSet は set[i] が set[0..i-1] と必ず文字を共有する順序で構築するので、
+    // 傍受データ(set[1..hints]) は確定情報＋先行する傍受データと連鎖する。
+    const confirmed = set[0];
     const confirmedMap = {}; chars(confirmed).forEach((c) => (confirmedMap[c] = charDigit[c]));
-    const rest = sh.slice(1); if (rest.length < cfg.hints) continue;
+    const rest = set.slice(1); if (rest.length < cfg.hints) continue;
     const deduction = rest.slice(0, cfg.hints);
     const usedSet = new Set(used); const shown = new Set([confirmed, ...deduction]);
     const qc = POOL.filter((n) => !shown.has(n) && chars(n).every((c) => usedSet.has(c)));
@@ -88,9 +91,12 @@ export function generatePuzzle(difficulty = "normal") {
       const questionSeq = encode(question); const deductionSeqs = deduction.map(encode);
       const qD = new Set(chars(question).map((c) => charDigit[c]));
       const cD = new Set(Object.values(confirmedMap));
-      const unknownInQ = [...qD].filter((d) => !cD.has(d)).length;
-      if (difficulty === "hard" && unknownInQ < 2) continue;
-      if (difficulty === "normal" && unknownInQ < 1) continue;
+      const confirmedInQ = [...qD].filter((d) => cD.has(d)).length;  // 問題に含まれる「確定情報で分かる数字」の数
+      const unknownInQ = qD.size - confirmedInQ;                     // 確定情報からは分からない（傍受データで推理する）数字の数
+      // 難易度別の出題条件
+      if (difficulty === "easy" && confirmedInQ < 1) continue;        // easy: 確定情報の文字を必ず含む
+      if (difficulty === "normal" && (confirmedInQ < 1 || unknownInQ < 1)) continue; // normal: 確定＋傍受の両方を使う
+      if (difficulty === "hard" && confirmedInQ > 0) continue;        // hard: 確定情報の文字は含まない（傍受データのみで推理）
       const res = solveQuestion(deductionSeqs, questionSeq, confirmedMap);
       if (res.size === 1 && res.has(question)) {
         return { difficulty, confirmed: { seq: encode(confirmed), name: confirmed }, confirmedMap, deductionSeqs, questionSeq, answer: question };

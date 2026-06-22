@@ -66,6 +66,20 @@ app/
 index.html, assets/        ... ビルド出力（リポジトリ直下）
 data/jp/students.json      ... 生徒データ（名前リストの生成元）
 images/student/...          ... 生徒画像（portrait / icon ほか）
+docs/added-students.md      ... 追加生徒リスト（名字・ID・画像有無の管理表）
+docs/added-students.csv     ... 同上（CSV）
+scripts/fetch-images.sh     ... 追加生徒の画像をSchaleDBから取得するスクリプト
+```
+
+## 追加生徒と画像の取得
+
+wikiru由来で追加した新規生徒（基準28名＋衣装違い42件）の一覧と画像取得状況は
+`docs/added-students.md` を参照。基準生徒には名字（姓・ふりがな）も付与済み。
+新規生徒の画像（icon / portrait）は未取得のため、以下で一括取得できます。
+
+```bash
+bash scripts/fetch-images.sh   # SchaleDB から images/student/{icon,portrait}/<ID>.webp を取得
+cd app && npm run build        # 取得後に再ビルドでゲームに反映
 ```
 
 ## クレジット
