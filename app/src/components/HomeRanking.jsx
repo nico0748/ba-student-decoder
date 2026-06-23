@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { topRows, bestTime, fmt } from "../ranking.js";
+import CardTitle from "./CardTitle.jsx";
 
 export default function HomeRanking({ ranking, difficulty, count, user }) {
   const rows = useMemo(() => topRows(ranking, difficulty, count, 5), [ranking, difficulty, count]);
@@ -8,9 +9,9 @@ export default function HomeRanking({ ranking, difficulty, count, user }) {
 
   return (
     <div className="card">
-      <h2><span className="bar"></span>ランキング
+      <CardTitle icon="trophy">ランキング
         <span className="tag" style={{ marginLeft: 6 }}>{difficulty.toUpperCase()} / {count}問</span>
-      </h2>
+      </CardTitle>
       <div className="row" style={{ marginBottom: 8 }}>
         <span className="tag">自己ベスト {best ? fmt(best) : "--:--.--"}</span>
       </div>
