@@ -112,7 +112,7 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
   const canHint = (status === "playing" || status === "wrong") && hintLevel < hintSteps.length;
 
   return (
-    <div>
+    <div className="screen-narrow">
       <div className="hdr">
         <h1 className="title"><span className="plus"></span>シャーレ暗号解読</h1>
       </div>

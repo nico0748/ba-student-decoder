@@ -7,15 +7,13 @@ export default function Footer() {
       <div className="footer-row">
         <span className="footer-key">データ出典</span>
         <span>
-          <a href="https://schaledb.com/" target="_blank" rel="noopener noreferrer">SchaleDB</a>（生徒名・プロフィール）／{" "}
-          <a href="https://bluearchive.wikiru.jp/" target="_blank" rel="noopener noreferrer">ブルアカ攻略 wikiru</a>（名字・プロフィール・立ち絵）
+          <a href="https://schaledb.com/" target="_blank" rel="noopener noreferrer">SchaleDB</a>（生徒名・プロフィール）
         </span>
       </div>
       <div className="footer-row">
         <span className="footer-key">画像出典</span>
         <span>
-          <a href="https://schaledb.com/" target="_blank" rel="noopener noreferrer">SchaleDB</a>（アイコン・立ち絵）／{" "}
-          <a href="https://bluearchive.wikiru.jp/" target="_blank" rel="noopener noreferrer">wikiru</a>（立ち絵）
+          <a href="https://schaledb.com/" target="_blank" rel="noopener noreferrer">SchaleDB</a>（アイコン・立ち絵）
         </span>
       </div>
       <p className="footer-note">
