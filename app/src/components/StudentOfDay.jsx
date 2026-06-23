@@ -36,9 +36,10 @@ export default function StudentOfDay() {
         </div>
         <dl className="sod-prof">
           {d.s && <><dt>学校</dt><dd>{d.s}{d.y ? `・${d.y}` : ""}</dd></>}
-          {d.cv && <><dt>CV</dt><dd>{d.cv}</dd></>}
+          {d.c && <><dt>所属</dt><dd>{d.c}</dd></>}
           {d.b && <><dt>誕生日</dt><dd>{d.b}{d.a ? `（${d.a}）` : ""}</dd></>}
           {d.h && <><dt>趣味</dt><dd>{d.h}</dd></>}
+          {d.cv && <><dt>CV</dt><dd>{d.cv}</dd></>}
         </dl>
         <button className="link" onClick={shuffle}>別の生徒を見る</button>
       </div>

@@ -14,6 +14,8 @@ const PATHS = {
   table: <><rect x="4" y="5" width="16" height="14" rx="2" /><path d="M4 10h16M4 14.5h16M9.5 10v9M14.5 10v9" /></>,
   pencil: <><path d="M14.5 5.5l4 4L9 19l-4.5 1 1-4.5z" /><path d="M13 7l4 4" /></>,
   check: <><path d="M5 12.5l4.5 4.5L19 7" /></>,
+  home: <><path d="M4 11.5L12 5l8 6.5" /><path d="M6 10.5V19h12v-8.5" /><path d="M10 19v-4.5h4V19" /></>,
+  play: <><path d="M8 5.5l11 6.5-11 6.5z" /></>,
 };
 
 export default function Icon({ name, size = 16 }) {

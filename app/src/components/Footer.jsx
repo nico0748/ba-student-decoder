@@ -1,25 +1,14 @@
 import React from "react";
+import { NAMES } from "../data.js";
 
-// データ・画像の出典と免責（トップ／ゲーム両画面で共通使用）
+// 簡素なテキストフッター（出典・免責）
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="footer-row">
-        <span className="footer-key">データ出典</span>
-        <span>
-          <a href="https://schaledb.com/" target="_blank" rel="noopener noreferrer">SchaleDB</a>（生徒名・プロフィール）
-        </span>
-      </div>
-      <div className="footer-row">
-        <span className="footer-key">画像出典</span>
-        <span>
-          <a href="https://schaledb.com/" target="_blank" rel="noopener noreferrer">SchaleDB</a>（アイコン・立ち絵）
-        </span>
-      </div>
-      <p className="footer-note">
-        本ゲームはブルーアーカイブのファンによる二次創作（非公式・非公認）であり、株式会社Yostar・NEXON Games および運営とは一切関係がありません。
-        「ブルーアーカイブ」および生徒名・キャラクター・画像等の権利はすべて権利者に帰属します。
-        二次創作ガイドラインの範囲内での利用を意図しており、権利者からの要請があれば速やかに対応します。
+      <p>本サイトは非公式のファン制作ゲームです。株式会社Yostar／NEXON Games をはじめとする『ブルーアーカイブ』の権利者・運営とは一切関係ありません。</p>
+      <p>『ブルーアーカイブ』の二次創作ガイドラインの範囲内での利用を意図しており、公式から許諾・後援・提携を受けたものではありません。生徒名・キャラクター等の著作権は原権利者に帰属します。問題がある場合は速やかに対応・公開を停止します。</p>
+      <p className="footer-src">
+        データ出典：<a href="https://schaledb.com/" target="_blank" rel="noopener noreferrer">SchaleDB</a> ／ 収録 {NAMES.length} 名
       </p>
     </footer>
   );
