@@ -90,13 +90,17 @@ export function generatePuzzle(difficulty = "normal") {
     for (const question of shuffle(qc)) {
       const questionSeq = encode(question); const deductionSeqs = deduction.map(encode);
       const qD = new Set(chars(question).map((c) => charDigit[c]));
-      const cD = new Set(Object.values(confirmedMap));
-      const confirmedInQ = [...qD].filter((d) => cD.has(d)).length;  // 問題に含まれる「確定情報で分かる数字」の数
-      const unknownInQ = qD.size - confirmedInQ;                     // 確定情報からは分からない（傍受データで推理する）数字の数
+      const cD = new Set(Object.values(confirmedMap));                // 確定情報に出る数字
+      const dD = new Set(); deductionSeqs.forEach((s) => chars(s).forEach((d) => dD.add(d))); // 傍受データに出る数字
+      // 当てずっぽう防止：問題の数字はすべて「確定情報 or 傍受データ」に出現していること
+      // （どのヒントにも無い数字が混ざると、その文字は推理不能になってしまう）
+      if ([...qD].some((d) => !cD.has(d) && !dD.has(d))) continue;
+      const confirmedInQ = [...qD].filter((d) => cD.has(d)).length;                 // 確定情報で直接分かる数字の数
+      const deducibleInQ = [...qD].filter((d) => !cD.has(d) && dD.has(d)).length;   // 傍受データから推理する数字の数
       // 難易度別の出題条件
       if (difficulty === "easy" && confirmedInQ < 1) continue;        // easy: 確定情報の文字を必ず含む
-      if (difficulty === "normal" && (confirmedInQ < 1 || unknownInQ < 1)) continue; // normal: 確定＋傍受の両方を使う
-      if (difficulty === "hard" && confirmedInQ > 0) continue;        // hard: 確定情報の文字は含まない（傍受データのみで推理）
+      if (difficulty === "normal" && (confirmedInQ < 1 || deducibleInQ < 1)) continue; // normal: 確定＋傍受の両方を使う
+      if (difficulty === "hard" && confirmedInQ > 0) continue;        // hard: 確定情報の数字は含まない（すべて傍受データから推理）
       const res = solveQuestion(deductionSeqs, questionSeq, confirmedMap);
       if (res.size === 1 && res.has(question)) {
         return { difficulty, confirmed: { seq: encode(confirmed), name: confirmed }, confirmedMap, deductionSeqs, questionSeq, answer: question };
