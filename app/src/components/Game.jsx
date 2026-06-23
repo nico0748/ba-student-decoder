@@ -5,6 +5,7 @@ import { portraitOf, hintOf } from "../data.js";
 import { toKatakana } from "../kana.js";
 import { fireConfetti } from "../confetti.js";
 import Footer from "./Footer.jsx";
+import CardTitle from "./CardTitle.jsx";
 
 const normalize = (s) => (s || "").trim().replace(/\s/g, "");
 
@@ -131,7 +132,7 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
       </div>
 
       <div className="card">
-        <h2><span className="bar"></span>傍受通信ログ <span className="tag" style={{ marginLeft: 6 }}>第 {Math.min(solved + 1, target)} 問</span></h2>
+        <CardTitle icon="signal">傍受通信ログ <span className="tag" style={{ marginLeft: 6 }}>第 {Math.min(solved + 1, target)} 問</span></CardTitle>
         <div className="seqline">
           <span className="seqlabel">確定情報</span>
           <div className="chips">{chars(puzzle.confirmed.seq).map((d, i) => <Chip key={i} digit={d} kana={fixedMap[d]} kind="fixed" />)}</div>
@@ -153,7 +154,7 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
       </div>
 
       <div className="card">
-        <h2><span className="bar"></span>対応表メモ <span className="small" style={{ fontWeight: 600, letterSpacing: 0, marginLeft: 6 }}>気づいた数字→文字を書き込もう</span></h2>
+        <CardTitle icon="table">対応表メモ <span className="small" style={{ fontWeight: 600, letterSpacing: 0, marginLeft: 6 }}>気づいた数字→文字を書き込もう</span></CardTitle>
         <div className="memo">
           {"0123456789".split("").map((d) => {
             const used = allDigits.has(d); const fixed = fixedMap[d] !== undefined;
@@ -170,7 +171,7 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
       </div>
 
       <div className="card">
-        <h2><span className="bar"></span>解答</h2>
+        <CardTitle icon="pencil">解答</CardTitle>
         <div className="row">
           <input className="txt" style={{ maxWidth: 280 }} placeholder="生徒名（カタカナ）" value={answer}
             onChange={(e) => { setAnswer(e.target.value); if (status === "wrong") setStatus("playing"); }}
@@ -187,7 +188,7 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
         </div>
 
         {revealedHints.length > 0 && status !== "done" && status !== "gaveup" && (
-          <div className="banner" style={{ background: "#eef6ff", color: "#1b4f86", border: "1.5px solid var(--ba-blue)", fontSize: 14 }}>
+          <div className="banner" style={{ background: "#eef6ff", color: "#1b4f86", border: "1.5px solid var(--ba-blue)", fontSize: 16 }}>
             💡 ヒント：{revealedHints.map((h) => `${h.label} = ${h.value}`).join("　/　")}
           </div>
         )}
@@ -204,7 +205,7 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
               <img src={portraitOf(puzzle.answer)} alt={puzzle.answer}
                 onError={(e) => { e.target.style.display = "none"; }}
                 style={{ width: 64, height: 64, borderRadius: 12, objectFit: "cover", objectPosition: "top", border: "2px solid var(--ba-green)", flex: "0 0 auto" }} />}
-            <span>★ {target}問 解読成功！　最後の答えは <span className="halo">{puzzle.answer}</span><br /><span style={{ fontWeight: 700, fontSize: 13 }}>{target}問 合計タイム {fmt(finalTime)}</span></span>
+            <span>★ {target}問 解読成功！　最後の答えは <span className="halo">{puzzle.answer}</span><br /><span style={{ fontWeight: 700, fontSize: 15 }}>{target}問 合計タイム {fmt(finalTime)}</span></span>
           </div>
         )}
 
@@ -225,7 +226,7 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
       </div>
 
       <div className="card">
-        <h2><span className="bar"></span>解読タイム ランキング <span className="tag" style={{ marginLeft: 6 }}>{difficulty.toUpperCase()} / {target}問</span></h2>
+        <CardTitle icon="trophy">解読タイム ランキング <span className="tag" style={{ marginLeft: 6 }}>{difficulty.toUpperCase()} / {target}問</span></CardTitle>
         {rankRows.length === 0 ? <p className="small">まだ記録がありません。最初の解読者になろう。</p> :
           <table className="rank">
             <thead><tr><th style={{ width: 48 }}>順位</th><th>先生</th><th>タイム</th><th>解読</th></tr></thead>

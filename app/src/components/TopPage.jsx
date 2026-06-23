@@ -5,6 +5,7 @@ import Footer from "./Footer.jsx";
 import StudentOfDay from "./StudentOfDay.jsx";
 import StatsPanel from "./StatsPanel.jsx";
 import HomeRanking from "./HomeRanking.jsx";
+import CardTitle from "./CardTitle.jsx";
 
 const DIFFS = [
   { key: "easy", name: "EASY", stars: "★☆☆", desc: "4名・ヒント2つ。まずは規則に慣れよう。" },
@@ -47,7 +48,7 @@ export default function TopPage({ difficulty, setDifficulty, count, setCount, us
         <div className="home-col left">
           <StudentOfDay />
           <div className="card">
-            <h2><span className="bar"></span>遊び方</h2>
+            <CardTitle icon="book">遊び方</CardTitle>
             <ol className="howto">
               <li>「確定情報」から、数字とカタカナの対応がいくつか分かる。</li>
               <li>「傍受データ」の数字列はすべて実在の生徒名。照合して文字を特定。</li>
@@ -60,7 +61,7 @@ export default function TopPage({ difficulty, setDifficulty, count, setCount, us
         {/* 中央カラム：操作群 */}
         <div className="home-col main">
           <div className="card">
-            <h2><span className="bar"></span>先生のお名前</h2>
+            <CardTitle icon="user">先生のお名前</CardTitle>
             <div className="row">
               <input className="txt" style={{ maxWidth: 260 }} placeholder="ニックネーム（任意）"
                 value={name} maxLength={12}
@@ -72,7 +73,7 @@ export default function TopPage({ difficulty, setDifficulty, count, setCount, us
           </div>
 
           <div className="card">
-            <h2><span className="bar"></span>難易度を選択</h2>
+            <CardTitle icon="gauge">難易度を選択</CardTitle>
             <div className="diffcards diffcards-stack">
               {DIFFS.map((d) => (
                 <button key={d.key} className={"diffcard" + (difficulty === d.key ? " sel" : "")}
@@ -86,7 +87,7 @@ export default function TopPage({ difficulty, setDifficulty, count, setCount, us
           </div>
 
           <div className="card">
-            <h2><span className="bar"></span>問題数を選択</h2>
+            <CardTitle icon="list">問題数を選択</CardTitle>
             <div className="diffcards diffcards-stack">
               {COUNTS.map((c) => (
                 <button key={c.key} className={"diffcard" + (count === c.key ? " sel" : "")}
@@ -110,7 +111,7 @@ export default function TopPage({ difficulty, setDifficulty, count, setCount, us
           <HomeRanking ranking={ranking} difficulty={difficulty} count={count} user={user} />
           <StatsPanel ranking={ranking} />
           <div className="card">
-            <h2><span className="bar"></span>生徒名簿 <span className="small" style={{ fontWeight: 600, letterSpacing: 0, marginLeft: 6 }}>{NAMES.length}名</span></h2>
+            <CardTitle icon="idcard">生徒名簿 <span className="small" style={{ fontWeight: 600, letterSpacing: 0, marginLeft: 6 }}>{NAMES.length}名</span></CardTitle>
             <button className="btn ghost" onClick={() => setShowRoster((s) => !s)}>{showRoster ? "名簿を閉じる" : "名簿を開く"}</button>
             <div className={"roster" + (showRoster ? " open" : "")} style={{ marginTop: showRoster ? 10 : 0 }}>
               {showRoster && NAMES.slice().sort().map((n) => (

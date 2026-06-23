@@ -1,5 +1,5 @@
 export function fireConfetti() {
-  const colors = ["#3da9fc", "#ffd34e", "#27c281", "#ff5a7a", "#1f7fd6"];
+  const colors = ["#3aa6dd", "#acedfb", "#ff8f6b", "#b9e4f7", "#2386c0", "#ffffff"];
   for (let i = 0; i < 70; i++) {
     const c = document.createElement("div");
     c.className = "confetti";
