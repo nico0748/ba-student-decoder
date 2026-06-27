@@ -38,6 +38,7 @@ const goto = (id) => {
 export default function TopPage({ difficulty, setDifficulty, count, setCount, user, setUser, ranking, onStart }) {
   const [name, setName] = useState(user || "");
   const [showRoster, setShowRoster] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false); // モバイルのハンバーガーメニュー開閉
 
   const commitName = () => { const u = (name || "").trim().slice(0, 12) || "先生"; setName(u); setUser(u); setUserLS(u); };
   const start = () => { commitName(); onStart(); };
@@ -54,6 +55,9 @@ export default function TopPage({ difficulty, setDifficulty, count, setCount, us
             <div className="side-brand-jp">シャーレ暗号解読</div>
             <div className="side-brand-en">SCHALE CIPHER</div>
           </div>
+          <button className="nav-toggle" aria-label="メニューを開く" aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}>
+            <Icon name="menu" size={24} />
+          </button>
         </div>
 
         <div className="card side-acc">
@@ -65,9 +69,15 @@ export default function TopPage({ difficulty, setDifficulty, count, setCount, us
           <span className="small">※ログイン不要・この端末に記録されます</span>
         </div>
 
-        <nav className="side-nav">
+        {/* モバイルではドロワー、デスクトップでは通常の縦ナビ */}
+        <div className={"nav-backdrop" + (menuOpen ? " show" : "")} onClick={() => setMenuOpen(false)} />
+        <nav className={"side-nav" + (menuOpen ? " open" : "")}>
+          <div className="nav-head">
+            <span className="nav-head-t">メニュー</span>
+            <button className="nav-close" aria-label="メニューを閉じる" onClick={() => setMenuOpen(false)}><Icon name="close" size={22} /></button>
+          </div>
           {NAV.map((n, i) => (
-            <button key={i} onClick={() => goto(n.id)}>
+            <button key={i} onClick={() => { goto(n.id); setMenuOpen(false); }}>
               <span className="nav-ico"><Icon name={n.icon} size={18} /></span>{n.label}
             </button>
           ))}

@@ -16,6 +16,8 @@ const PATHS = {
   check: <><path d="M5 12.5l4.5 4.5L19 7" /></>,
   home: <><path d="M4 11.5L12 5l8 6.5" /><path d="M6 10.5V19h12v-8.5" /><path d="M10 19v-4.5h4V19" /></>,
   play: <><path d="M8 5.5l11 6.5-11 6.5z" /></>,
+  menu: <><path d="M4 7h16M4 12h16M4 17h16" /></>,
+  close: <><path d="M6 6l12 12M18 6L6 18" /></>,
 };
 
 export default function Icon({ name, size = 16 }) {
