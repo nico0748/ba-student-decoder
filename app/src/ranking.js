@@ -10,15 +10,20 @@ export const setRank = (r) => { try { localStorage.setItem(LS_RANK, JSON.stringi
 // 問題数(count)。旧レコードは1問記録として扱う。
 export const recordCount = (r) => r.count || 1;
 
-// 同じ (ユーザ名 × 難易度 × 問題数) は1レコードに集約し、より速いタイムのときだけ更新する。
-// （再挑戦のたびに重複レコードが積み上がらないようにするため。既存の重複も best 1件へ集約）
+// 所有者キー：client_id を優先（名前を変えても同じ端末＝同じ所有者として同定）。
+// client_id が無い旧レコードは名前で識別する。
+export const ownerKey = (r) => (r.clientId ? `cid:${r.clientId}` : `name:${r.name}`);
+
+// 同じ (所有者 × 難易度 × 問題数) は1レコードに集約。ベストタイムは保持しつつ、名前は最新の入力に更新する。
+// （名前変更後の再挑戦でも client_id が同じなら既存レコードを更新し、重複を作らない）
 export const addRecord = (entry) => {
   const all = getRank();
-  const sameKey = (x) => x.name === entry.name && x.difficulty === entry.difficulty && recordCount(x) === recordCount(entry);
+  const sameKey = (x) => ownerKey(x) === ownerKey(entry) && x.difficulty === entry.difficulty && recordCount(x) === recordCount(entry);
   const others = all.filter((x) => !sameKey(x));
-  let best = entry;
-  for (const x of all.filter(sameKey)) { if (x.time < best.time) best = x; } // 既存ベストの方が速ければ温存
-  const r = [...others, best];
+  let best = entry.time;
+  for (const x of all.filter(sameKey)) { if (x.time < best) best = x.time; } // 既存ベストの方が速ければ温存
+  const merged = { ...entry, time: best }; // 名前など他項目は最新(entry)を採用、タイムだけベスト保持
+  const r = [...others, merged];
   setRank(r);
   return r;
 };
@@ -33,14 +38,18 @@ export const bestTime = (ranking, difficulty, count, name) => {
   return mine.length ? Math.min(...mine.map((r) => r.time)) : null;
 };
 
-// 難易度×問題数 の上位ランキング行（名前ごとにベスト1件へ集約）。
-// 過去に蓄積された重複レコードがあっても1ユーザ1行で表示する。
+// 難易度×問題数 の上位ランキング行（所有者ごとにベスト1件へ集約）。
+// client_id 単位で集約し、ベストタイム＋最新の名前で表示する（過去の重複・旧名も1行に統合）。
 export const topRows = (ranking, difficulty, count, limit = 10) => {
-  const bestByName = new Map();
+  const byOwner = new Map();
   for (const r of ranking) {
     if (r.difficulty !== difficulty || recordCount(r) !== count) continue;
-    const cur = bestByName.get(r.name);
-    if (!cur || r.time < cur.time) bestByName.set(r.name, r);
+    const k = ownerKey(r);
+    const cur = byOwner.get(k);
+    if (!cur) { byOwner.set(k, { ...r }); continue; }
+    const best = r.time < cur.time ? r.time : cur.time;              // ベストタイム
+    const latest = (r.date || 0) > (cur.date || 0) ? r : cur;        // 最新の名前
+    byOwner.set(k, { ...latest, time: best });
   }
-  return [...bestByName.values()].sort((a, b) => a.time - b.time).slice(0, limit);
+  return [...byOwner.values()].sort((a, b) => a.time - b.time).slice(0, limit);
 };

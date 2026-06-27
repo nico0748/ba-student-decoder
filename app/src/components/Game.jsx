@@ -1,12 +1,13 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { generatePuzzle, chars } from "../engine.js";
-import { addRecord, fmt, bestTime, topRows, setRank } from "../ranking.js";
+import { addRecord, fmt, bestTime, setRank } from "../ranking.js";
+import { useLeaderboard } from "../useLeaderboard.js";
 import { portraitOf, hintOf } from "../data.js";
 import { toKatakana } from "../kana.js";
 import { fireConfetti } from "../confetti.js";
 import Footer from "./Footer.jsx";
 import CardTitle from "./CardTitle.jsx";
-import { remoteEnabled, startSession, submitScore } from "../leaderboard.js";
+import { remoteEnabled, startSession, submitScore, clientId } from "../leaderboard.js";
 
 const normalize = (s) => (s || "").trim().replace(/\s/g, "");
 
@@ -31,6 +32,7 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
   const [start, setStart] = useState(Date.now()); // セッション開始時刻（問題が変わってもリセットしない）
   const [now, setNow] = useState(Date.now());
   const [finalTime, setFinalTime] = useState(0);
+  const [boardRefresh, setBoardRefresh] = useState(0); // 共有ランキング再取得トリガ
   const timerRef = useRef(null);
   const tokenRef = useRef(null);      // サーバ発行の開始トークン（共有ランキング用）
   const solvedRef = useRef([]);       // 検証用に各問の出題内容を収集
@@ -66,7 +68,7 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
 
   const elapsed = inProgress ? now - start : finalTime;
 
-  const rankRows = useMemo(() => topRows(ranking, difficulty, target), [ranking, difficulty, target]);
+  const { rows: rankRows, source: rankSource, loading: rankLoading } = useLeaderboard(ranking, difficulty, target, 10, boardRefresh);
   const myBest = useMemo(() => bestTime(ranking, difficulty, target, user || "先生"), [ranking, difficulty, target, user]);
 
   if (!puzzle) return <div style={{ padding: 40, textAlign: "center" }}>生成中...</div>;
@@ -101,11 +103,12 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
         clearInterval(timerRef.current);
         const final = Date.now() - start; setFinalTime(final);
         setStatus("done"); fireConfetti();
-        const entry = { name: user || "先生", time: final, difficulty, count: target, answer: puzzle.answer, date: Date.now() };
+        const entry = { name: user || "先生", time: final, difficulty, count: target, answer: puzzle.answer, date: Date.now(), clientId: clientId() };
         setRanking(addRecord(entry)); // 端末内（即時表示＆オフライン）
         // 共有ランキングへ送信（サーバが時間計測＋出題/回答を検証）
         if (remoteEnabled && tokenRef.current) {
-          submitScore({ token: tokenRef.current, name: user || "先生", difficulty, count: target, puzzles: solvedRef.current });
+          submitScore({ token: tokenRef.current, name: user || "先生", difficulty, count: target, puzzles: solvedRef.current })
+            .then((res) => { if (res && res.ok) setBoardRefresh((k) => k + 1); }); // 送信成功後に共有ランキングを再取得
         }
       } else {
         setStatus("solved"); // 次の問題へ待ち（タイマーは継続）
@@ -255,17 +258,23 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
       </div>
 
       <div className="card">
-        <CardTitle icon="trophy">解読タイム ランキング <span className="tag" style={{ marginLeft: 6 }}>{difficulty.toUpperCase()} / {target}問</span></CardTitle>
-        {rankRows.length === 0 ? <p className="small">まだ記録がありません。最初の解読者になろう。</p> :
-          <table className="rank">
-            <thead><tr><th style={{ width: 48 }}>順位</th><th>先生</th><th>タイム</th><th>解読</th></tr></thead>
+        <CardTitle icon="trophy">解読タイム ランキング
+          <span className="tag" style={{ marginLeft: 6 }}>{difficulty.toUpperCase()} / {target}問</span>
+          <span className="tag" style={{ marginLeft: 6, background: rankSource === "remote" ? "#e7f6ee" : "#eef4fb", color: rankSource === "remote" ? "#0d8b56" : "var(--ba-blue-d)" }}>
+            {rankSource === "remote" ? "🌐 共有" : "📱 端末内"}
+          </span>
+        </CardTitle>
+        {rankRows.length === 0
+          ? <p className="small">{rankLoading ? "読み込み中…" : "まだ記録がありません。最初の解読者になろう。"}</p>
+          : <table className="rank">
+            <thead><tr><th style={{ width: 48 }}>順位</th><th>先生</th><th>タイム</th>{rankSource === "local" && <th>解読</th>}</tr></thead>
             <tbody>
               {rankRows.map((r, i) => (
                 <tr key={i} className={r.name === (user || "先生") ? "me" : ""}>
                   <td className="medal">{i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : i + 1}</td>
                   <td>{r.name}</td>
                   <td style={{ fontVariantNumeric: "tabular-nums", fontWeight: 800 }}>{fmt(r.time)}</td>
-                  <td className="small">{r.answer}</td>
+                  {rankSource === "local" && <td className="small">{r.answer}</td>}
                 </tr>
               ))}
             </tbody>

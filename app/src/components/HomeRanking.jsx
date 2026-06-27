@@ -1,9 +1,10 @@
 import React, { useMemo } from "react";
-import { topRows, bestTime, fmt } from "../ranking.js";
+import { bestTime, fmt } from "../ranking.js";
+import { useLeaderboard } from "../useLeaderboard.js";
 import CardTitle from "./CardTitle.jsx";
 
 export default function HomeRanking({ ranking, difficulty, count, user }) {
-  const rows = useMemo(() => topRows(ranking, difficulty, count, 5), [ranking, difficulty, count]);
+  const { rows, source, loading } = useLeaderboard(ranking, difficulty, count, 5);
   const me = user || "先生";
   const best = useMemo(() => bestTime(ranking, difficulty, count, me), [ranking, difficulty, count, me]);
 
@@ -11,12 +12,15 @@ export default function HomeRanking({ ranking, difficulty, count, user }) {
     <div className="card">
       <CardTitle icon="trophy">ランキング
         <span className="tag" style={{ marginLeft: 6 }}>{difficulty.toUpperCase()} / {count}問</span>
+        <span className="tag" style={{ marginLeft: 6, background: source === "remote" ? "#e7f6ee" : "#eef4fb", color: source === "remote" ? "#0d8b56" : "var(--ba-blue-d)" }}>
+          {source === "remote" ? "🌐 共有" : "📱 端末内"}
+        </span>
       </CardTitle>
       <div className="row" style={{ marginBottom: 8 }}>
         <span className="tag">自己ベスト {best ? fmt(best) : "--:--.--"}</span>
       </div>
       {rows.length === 0
-        ? <p className="small">まだ記録がありません。最初の解読者になろう。</p>
+        ? <p className="small">{loading ? "読み込み中…" : "まだ記録がありません。最初の解読者になろう。"}</p>
         : <table className="rank">
             <tbody>
               {rows.map((r, i) => (
