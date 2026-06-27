@@ -6,6 +6,10 @@ app/.vite/
 node_modules/
 dist/
 
+# 環境変数（実値はコミットしない。テンプレートは .env.example を使用）
+app/.env
+.env
+
 # OS / エディタ
 .DS_Store
 *.log

@@ -6,6 +6,7 @@ import { toKatakana } from "../kana.js";
 import { fireConfetti } from "../confetti.js";
 import Footer from "./Footer.jsx";
 import CardTitle from "./CardTitle.jsx";
+import { remoteEnabled, startSession, submitScore } from "../leaderboard.js";
 
 const normalize = (s) => (s || "").trim().replace(/\s/g, "");
 
@@ -31,6 +32,8 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
   const [now, setNow] = useState(Date.now());
   const [finalTime, setFinalTime] = useState(0);
   const timerRef = useRef(null);
+  const tokenRef = useRef(null);      // サーバ発行の開始トークン（共有ランキング用）
+  const solvedRef = useRef([]);       // 検証用に各問の出題内容を収集
 
   // 1問だけ生成（タイマーは触らない）
   const loadPuzzle = () => {
@@ -46,6 +49,8 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
   const newSession = () => {
     setSolved(0); setFinalTime(0);
     setStart(Date.now()); setNow(Date.now());
+    solvedRef.current = []; tokenRef.current = null;
+    if (remoteEnabled) startSession(difficulty, target).then((s) => { if (s) tokenRef.current = s.token; });
     loadPuzzle();
   };
 
@@ -84,6 +89,12 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
   const submit = () => {
     if (status !== "playing" && status !== "wrong") return;
     if (normalize(answer) === normalize(puzzle.answer)) {
+      // 検証用にこの問の出題内容を収集
+      solvedRef.current.push({
+        confirmed: puzzle.confirmed, confirmedMap: puzzle.confirmedMap,
+        deductionSeqs: puzzle.deductionSeqs, questionSeq: puzzle.questionSeq,
+        answer: puzzle.answer, userAnswer: puzzle.answer,
+      });
       const newSolved = solved + 1;
       setSolved(newSolved);
       if (newSolved >= target) {
@@ -91,7 +102,11 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
         const final = Date.now() - start; setFinalTime(final);
         setStatus("done"); fireConfetti();
         const entry = { name: user || "先生", time: final, difficulty, count: target, answer: puzzle.answer, date: Date.now() };
-        setRanking(addRecord(entry));
+        setRanking(addRecord(entry)); // 端末内（即時表示＆オフライン）
+        // 共有ランキングへ送信（サーバが時間計測＋出題/回答を検証）
+        if (remoteEnabled && tokenRef.current) {
+          submitScore({ token: tokenRef.current, name: user || "先生", difficulty, count: target, puzzles: solvedRef.current });
+        }
       } else {
         setStatus("solved"); // 次の問題へ待ち（タイマーは継続）
       }
