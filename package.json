@@ -1,0 +1,8 @@
+{
+  "name": "ba-student-decoder-functions",
+  "private": true,
+  "description": "Vercel サーバレス関数（OGP 共有画像生成など）の依存。アプリ本体は app/ 配下。",
+  "dependencies": {
+    "@vercel/og": "^0.6.4"
+  }
+}

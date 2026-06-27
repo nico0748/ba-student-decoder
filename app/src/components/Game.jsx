@@ -119,6 +119,15 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
     setStatus("gaveup");
   };
 
+  // リザルトを X（旧Twitter）へ共有。共有URLは /api/share（結果焼き込みOGP画像を返す）を指す。
+  const shareToX = () => {
+    const text = `シャーレ暗号解読 [${difficulty.toUpperCase()} / ${target}問] を ${fmt(finalTime)} でクリア！🎉\n#シャーレ暗号解読 #ブルアカ`;
+    const origin = (typeof window !== "undefined") ? window.location.origin : "";
+    const shareUrl = origin ? `${origin}/api/share?d=${difficulty}&c=${target}&t=${finalTime}` : "";
+    const intent = `https://x.com/intent/tweet?text=${encodeURIComponent(text)}${shareUrl ? `&url=${encodeURIComponent(shareUrl)}` : ""}`;
+    if (typeof window !== "undefined") window.open(intent, "_blank", "noopener,noreferrer");
+  };
+
   // ヒント（答えの生徒の 所属学園 → 学年/レアリティ の順に段階公開）
   const hint = hintOf(puzzle.answer);
   const hintSteps = [];
@@ -235,6 +244,11 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
         {(status === "done" || status === "gaveup") && (
           <div className="row" style={{ marginTop: 12 }}>
             <button className="btn gold" onClick={newSession}>もう一度（{target}問）</button>
+            {status === "done" && (
+              <button className="btn" style={{ background: "#000", boxShadow: "0 4px 12px rgba(0,0,0,.25)" }} onClick={shareToX}>
+                𝕏 で共有
+              </button>
+            )}
             <button className="btn ghost" onClick={onExit}>← トップへ</button>
           </div>
         )}
