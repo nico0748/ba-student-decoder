@@ -1,7 +1,7 @@
 // シャーレ暗号解読 PWA Service Worker
 // 方針：ナビゲーションは network-first（最新を取りつつオフライン時はキャッシュ）、
 // 同一オリジンの静的資産（JS/CSS/画像など）は stale-while-revalidate でキャッシュ。
-const VERSION = "v1";
+const VERSION = "v2";
 const CACHE = "schale-cipher-" + VERSION;
 const CORE = ["./", "./index.html", "./manifest.webmanifest", "./favicon.svg", "./icon-192.png", "./icon-512.png"];
 
@@ -27,7 +27,11 @@ self.addEventListener("fetch", (e) => {
   if (req.mode === "navigate") {
     e.respondWith(
       fetch(req)
-        .then((res) => { caches.open(CACHE).then((c) => c.put("./index.html", res.clone())); return res; })
+        .then((res) => {
+          const copy = res.clone(); // 本体消費前に同期でクローン
+          caches.open(CACHE).then((c) => c.put("./index.html", copy)).catch(() => {});
+          return res;
+        })
         .catch(() => caches.match(req).then((m) => m || caches.match("./index.html")))
     );
     return;
@@ -38,7 +42,10 @@ self.addEventListener("fetch", (e) => {
     e.respondWith(
       caches.match(req).then((cached) => {
         const fetchP = fetch(req).then((res) => {
-          if (res && res.status === 200) caches.open(CACHE).then((c) => c.put(req, res.clone()));
+          if (res && res.status === 200 && res.type === "basic") {
+            const copy = res.clone(); // 本体消費前に同期でクローン
+            caches.open(CACHE).then((c) => c.put(req, copy)).catch(() => {});
+          }
           return res;
         }).catch(() => cached);
         return cached || fetchP;
