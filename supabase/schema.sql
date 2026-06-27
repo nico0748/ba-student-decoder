@@ -49,7 +49,10 @@ create policy "scores public read" on public.scores
 -- INSERT/UPDATE/DELETE ポリシーは作らない → anon からは不可
 
 -- =====================================================================
--- ランキング取得 RPC（名前ごとのベストのみ・上位N件）
+-- ランキング取得 RPC（所有者ごとのベストのみ・上位N件）
+--  ・client_id 単位で集約（名前を変えても同じ端末＝同じ所有者として1件に統合）
+--  ・client_id が無い旧レコードは名前で集約
+--  ・各所有者のベストタイム＋最新の名前で返す
 -- anon から呼べるが SELECT のみ・SECURITY INVOKER（RLSに従う）
 -- =====================================================================
 create or replace function public.get_leaderboard(p_difficulty text, p_count integer, p_limit integer default 10)
@@ -59,28 +62,25 @@ stable
 security invoker
 set search_path = public
 as $$
-  select distinct on (name) name, time_ms, created_at
-  from public.scores
-  where difficulty = p_difficulty and count = p_count
-  order by name, time_ms asc
-$$;
-
--- ↑ DISTINCT ON で名前ごとのベストを出し、外側で時間順に並べ替え＋件数制限
-create or replace function public.get_leaderboard(p_difficulty text, p_count integer, p_limit integer default 10)
-returns table (name text, time_ms integer, created_at timestamptz)
-language sql
-stable
-security invoker
-set search_path = public
-as $$
-  select name, time_ms, created_at
-  from (
-    select distinct on (name) name, time_ms, created_at
+  with base as (
+    select
+      coalesce(client_id::text, 'name:' || name) as owner_key,
+      name, time_ms, created_at
     from public.scores
     where difficulty = p_difficulty and count = p_count
-    order by name, time_ms asc
-  ) b
-  order by time_ms asc
+  ),
+  agg as (
+    select
+      owner_key,
+      min(time_ms)                                  as best_ms,
+      max(created_at)                               as last_at,
+      (array_agg(name order by created_at desc))[1] as latest_name
+    from base
+    group by owner_key
+  )
+  select latest_name as name, best_ms as time_ms, last_at as created_at
+  from agg
+  order by best_ms asc
   limit greatest(1, least(p_limit, 100))
 $$;
 
