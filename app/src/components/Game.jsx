@@ -8,6 +8,7 @@ import { fireConfetti } from "../confetti.js";
 import Footer from "./Footer.jsx";
 import CardTitle from "./CardTitle.jsx";
 import { remoteEnabled, startSession, submitScore, clientId } from "../leaderboard.js";
+import { track } from "../analytics.js";
 
 const normalize = (s) => (s || "").trim().replace(/\s/g, "");
 
@@ -53,6 +54,7 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
     setStart(Date.now()); setNow(Date.now());
     solvedRef.current = []; tokenRef.current = null;
     if (remoteEnabled) startSession(difficulty, target).then((s) => { if (s) tokenRef.current = s.token; });
+    track("game_start", { difficulty, count: target });
     loadPuzzle();
   };
 
@@ -103,6 +105,7 @@ export default function Game({ difficulty, count, user, ranking, setRanking, onE
         clearInterval(timerRef.current);
         const final = Date.now() - start; setFinalTime(final);
         setStatus("done"); fireConfetti();
+        track("game_clear", { difficulty, count: target, time_ms: final });
         const entry = { name: user || "先生", time: final, difficulty, count: target, answer: puzzle.answer, date: Date.now(), clientId: clientId() };
         setRanking(addRecord(entry)); // 端末内（即時表示＆オフライン）
         // 共有ランキングへ送信（サーバが時間計測＋出題/回答を検証）
